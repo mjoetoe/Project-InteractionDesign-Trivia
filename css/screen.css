@@ -1,0 +1,1182 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+@font-face{
+    font-family: "HKGrotesk web";
+    font-weight: 400;
+    font-display: swap; /*zorg voor een correcte omwisseling als het font geladen is*/
+    src: url('../fonts/HKGrotesk-Regular.woff2');
+}
+
+@font-face{
+    font-family: "HKGrotesk web";
+    font-weight: 600;
+    font-display: swap; /*zorg voor een correcte omwisseling als het font geladen is*/
+    src: url('../fonts/HKGrotesk-Bold.woff2');
+}
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+
+    /* Colors */
+    --color-x-light: #F3F3F3;
+    --color-xx-light: #E9E9E9;
+    --color-button: #6E6CE4;
+    --color-font: #404040;
+    --color-correct:  #99B93B;
+    --color-incorrect: #B94D4D;
+    --global-baseline: 8px; 
+    --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+    --global-whitespace-sm: var(--global-baseline); /* = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2); /* = 16px */
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4); /* = 32px */   
+    --global-whitespace-xl: calc(var(--global-whitespace-md) * 2); /* = 48px */    
+    --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /* = 72px */ 
+    --global-whitespace-xxxl: calc(var(--global-whitespace) * 4); /* = 96px */     
+}
+
+/* CSS variables here */
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    height: 100vh;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: "HKGrotesk web","Comic Sans MS",Helvetica, arial, sans-serif;
+    color: #20223a;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-x-light);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+::-moz-selection {
+    background: #3385FF;
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: #3385FF;
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 48px;
+    margin: 0 0 var(--global-whitespace);
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 var(--global-whitespace);
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0 0 var(--global-whitespace);
+}
+
+h4,
+h5,
+h6 {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 var(--global-whitespace);
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 var(--global-whitespace);
+}
+
+ul,
+ol {
+    padding-left: var(--global-whitespace);
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 var(--global-whitespace);
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: var(--global-whitespace-sm);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 var(--global-whitespace);
+}
+
+a {
+    color: var(--global-color-alpha);
+    transition: all .1s ease-in-out;
+}
+
+a:visited,
+a:active {
+    color: var(--global-color-alpha);
+}
+
+a:hover,
+a:focus {
+    color: var(--global-color-alpha-light);
+}
+
+label,
+input {
+    display: block;
+}
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+    position: relative;
+    padding: var(--global-whitespace) var(--global-whitespace) 0;
+}
+
+.o-row--login {
+    display: flex;
+    align-items: center;
+    min-height: 100vh; /* Altijd de hoogte van het zichtbare deel v/h scherm */
+}
+
+/* size modifiers */
+
+.o-row--lg {
+    padding-top: var(--global-whitespace-xl);
+    padding-bottom: var(--global-whitespace);
+}
+
+.o-row--xl {
+    padding-top: var(--global-whitespace-xxl);
+    padding-bottom: var(--global-whitespace-xl);
+}
+
+@media (min-width: 768px) {
+    .o-row {
+        padding-left: var(--global-whitespace-xl);
+        padding-right: var(--global-whitespace-xl);
+    }
+}
+
+@media (min-width: 992px) {
+    .o-row--xl {
+        padding-top: var(--global-whitespace-xxxl);
+        padding-bottom: var(--global-whitespace-xxl);
+    }
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 79.5em; /* 79.5 * 16px = 1272 */
+    width: 80%;
+}
+
+
+/* Desktop */
+@media (min-width: 1100px) {
+    .o-container {
+        width: 40%;
+    }
+}
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+    position: relative;
+}
+
+.o-section + .o-section {
+    padding-top: var(--global-whitespace);
+}
+
+@media (min-width: 768px) {
+    .o-section--lg + .o-section--lg,
+    .o-section--xl + .o-section--xl {
+        padding-top: var(--global-whitespace-xl);
+    }
+}
+
+@media (min-width: 992px) {
+    .o-section--xl + .o-section--xl {
+        padding-top: var(--global-whitespace-xxl);
+    }
+}
+
+/*
+    Objects: Layout
+    ---
+    The layout object provides us with a column-style layout system. This object
+    contains the basic structural elements, but classes should be complemented
+    with width utilities
+*/
+
+.o-layout {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.o-layout__item {
+    width: 100%;
+}
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+    margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+    padding: 0 var(--global-whitespace)/2;
+}
+
+.o-layout--gutter-sm {
+    margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+    padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+    margin: 0 -24px;
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+    padding: 0 var(--global-whitespace);
+}
+
+.o-layout--gutter-xl {
+    margin: 0 -48px;
+}
+
+.o-layout--gutter-xl > .o-layout__item {
+    padding: 0 var(--global-whitespace)*2;
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+    flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+    justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+    justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+    justify-content: center;
+}
+
+.o-layout--justify-space-around {
+    justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+    justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+    justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-start {
+    align-items: flex-start;
+}
+
+.o-layout--align-end {
+    align-items: flex-end;
+}
+
+.o-layout--align-center {
+    align-items: center;
+}
+
+.o-layout--align-baseline {
+    align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+    align-content: start;
+}
+
+.o-layout--align-content-end {
+    align-content: end;
+}
+
+.o-layout--align-content-center {
+    align-content: center;
+}
+
+.o-layout--align-content-space-around {
+    align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+    align-content: space-between;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+.c-content {
+    margin-top: 24px;
+    position: relative;
+}
+
+/*
+    TEXT BLOCK
+*/
+
+.c-textblock {
+    font-size: 24px;
+    font-weight: 400;
+    padding-bottom: 40px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .c-textblock {
+        font-size: 32px;
+    }
+}
+
+.c-textblock-inspiration {
+    font-weight: 600;
+}
+
+
+
+/*
+    LANDINGSPAGE
+*/
+
+.c-landingspage {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.c-image-landingspage {
+    width: 200px;
+    margin: 0 auto;
+    /*position: fixed;
+    bottom: 0;*/
+}
+
+
+
+.c-landingspage-title {
+    font-size: 42px;
+}
+
+.c-landingspage-subtitle {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.c-landingspage-content {
+    display: flex; 
+    flex-direction: column;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .c-image-landingspage {
+        width: 950px;
+        margin-left: 10%;
+    }
+    .c-textblock-landingspage {
+        width: 60%;
+    }
+    .c-landingspage-title {
+        font-size: 52px;
+    }
+    .c-landingspage-subtitle {
+        font-size: 38px;
+        line-height: 1.5;
+    }
+    .c-landingspage-content {
+        flex-direction: row-reverse;
+    }
+}
+
+/*
+    INFO SECTION LANDINGSPAGE
+*/
+.c-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.c-card {
+    background: var(--color-xx-light);
+    padding-top: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 25rem;
+    height: 14rem;
+    margin: 0 auto;
+    box-shadow: 7px 7px 9px -2px rgba(0,0,0,0.31);
+    border-radius: 3px;
+}
+
+.c-card + .c-card {
+    margin-top: 26px;
+    width: 100%;
+}
+
+.c-card__header {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.c-card__body {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+@media (min-width: 1360px) {
+    .c-info {
+        flex-direction: row;
+        margin-top: 50px;
+    }
+    .c-card {
+        margin: 0;
+    }
+    .c-card + .c-card {
+        margin-top: 0px;
+        margin-left: 48px;
+    }
+    .c-image-landingspage {
+        width: 750px;
+        /*position: fixed;
+        bottom: 0;
+        margin-left: 25%;*/
+    }
+    .c-card {
+        max-width: none;
+        width: 100%;
+    }
+    .u-fontsize-medium {
+        font-size: 18px;
+    }
+}
+
+
+/*
+    PROGRESS BAR
+*/
+.c-progress-section {
+    margin-top: 26px;
+    height: 50vh;
+}
+
+/* Desktop */
+@media (min-width: 1100px) {
+    .c-progress-section {
+        height: 15vh;
+    }
+}
+
+.c-progressbar {
+    border: 5px solid var(--color-font);
+    border-radius: 40px;
+}
+
+.c-progressbar-status {
+    border-radius: 40px;
+    height: 40px;
+    transition: width 2s;
+}
+
+.is-easy {
+    background: var(--color-button);
+    width: 20%;
+}
+
+.is-medium {
+    background: #FECB36;
+    width: 60%;
+}
+
+.is-hard {
+    background: #E83647;
+    width: 90%;
+}
+
+.c-progress-text {
+    margin-top: 6px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.c-progress-text--right {
+    float: right;
+}
+
+
+/*
+    BUTTON
+*/
+.c-trivia__button {
+    width: 100%;
+    font-weight: 600;
+    outline: none;
+    transition: var(--transition-alpha);
+
+    padding: 1rem;
+    border: 3px solid #CFD4EC66;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.c-trivia__answers--item {
+    margin-bottom: 0.75rem;
+}
+
+
+.correct{
+    width: 100%;
+    font-weight: 600;
+    outline: none;
+    transition: var(--transition-alpha);
+
+    padding: 1rem;
+    border: 3px solid #CFD4EC66;
+    border-radius: 40px;
+    cursor: pointer;
+    background: var(--color-correct);
+    color:white;
+}
+
+.incorrect{
+    width: 100%;
+    font-weight: 600;
+    outline: none;
+    transition: var(--transition-alpha);
+
+    padding: 1rem;
+    border: 3px solid #CFD4EC66;
+    border-radius: 40px;
+    cursor: pointer;
+    background: var(--color-incorrect);
+    color:white;
+}
+
+.c-button-submit {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--color-button);
+    color:  var(--color-font);
+    padding: 11px 16px;
+    line-height: 24px;
+    width: 100%;
+    outline: none;
+    transition: font-size 0.2s;
+}
+
+.c-button-submit:hover {
+    background-color: #4846df;
+}
+
+.c-button-submit:focus {
+    box-shadow: 10px 10px 22px -12px rgba(0,0,0,0.41);
+}
+
+.c-button-submit:active {
+    font-size: 14px;
+}
+
+.c-button {
+    background: #707070;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    transition: width height 2s;
+}
+
+.c-button:hover {
+    width: 84px;
+    height: 84px;
+}
+
+
+
+/*
+    FOOTER
+*/
+
+.c-footer {
+    font-size: 10px;
+    text-align: center;
+    padding-top: 12px;
+    bottom: 0;
+    padding-top: 130px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .c-footer {
+        font-size: 12px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+
+/*
+    INPUT
+*/
+
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: black;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 11px 16px;
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    box-shadow: 10px 10px 22px -12px rgba(0,0,0,0.41);
+}
+
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+
+/*
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
+*/
+
+
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+    padding-top: 0 !important;
+}
+
+.u-mb-clear {
+    margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+    margin-bottom: var(--global-whitespace-xs) !important;
+}
+
+.u-mb-sm {
+    margin-bottom: var(--global-whitespace-sm) !important;
+}
+
+.u-mb-md {
+    margin-bottom: var(--global-whitespace-md) !important;
+}
+
+.u-mb-lg {
+    margin-bottom: var(--global-whitespace-lg) !important;
+}
+
+.u-mb-xl {
+    margin-bottom: var(--global-whitespace-xl) !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-xs {
+    max-width: 27em !important;
+}
+
+.u-max-width-sm {
+    max-width: 39em !important;
+}
+
+.u-max-width-md {
+    max-width: 50em !important;
+}
+
+.u-max-width-lg {
+    max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+    max-width: none !important;
+}
+
+
+/*
+    Utilities: align
+    ---
+    Utility classes align text or components
+*/
+
+.u-align-text-center {
+    text-align: center;
+}
+
+.u-align-center {
+    margin: 0 auto;
+}
+
+/*
+    Utilities: text
+    Utility classes to create smaller or bigger test
+*/
+
+.u-text-sm {
+    font-size: 14px;
+}
+
+/*
+    Utility: Widths
+    ---
+    Utility classes to put specific widths onto elements
+    Will be mostly used on o-layout__item
+*/
+
+.u-width-auto {
+    width: auto !important;
+}
+
+.u-1-of-2 {
+    width: 50% !important;
+}
+
+.u-1-of-3 {
+    width: 33.3333333333% !important;
+}
+
+.u-2-of-3 {
+    width: 66.6666666667% !important;
+}
+
+.u-1-of-4 {
+    width: 25% !important;
+}
+
+.u-3-of-4 {
+    width: 75% !important;
+}
+
+.u-1-of-5 {
+    width: 20% !important;
+}
+
+.u-2-of-5 {
+    width: 40% !important;
+}
+
+.u-3-of-5 {
+    width: 60% !important;
+}
+
+.u-4-of-5 {
+    width: 80% !important;
+}
+
+.u-1-of-6 {
+    width: 16.6666666667% !important;
+}
+
+.u-5-of-6 {
+    width: 83.3333333333% !important;
+}
+
+@media (min-width: 576px) {
+    .u-1-of-2-bp1 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp1 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp1 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp1 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp1 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp1 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp1 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp1 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp1 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp1 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp1 {
+        width: 83.3333333333% !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .u-1-of-2-bp2 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp2 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp2 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp2 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp2 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp2 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp2 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp2 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp2 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp2 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp2 {
+        width: 83.3333333333% !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .u-1-of-2-bp3 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp3 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp3 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp3 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp3 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp3 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp3 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp3 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp3 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp3 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp3 {
+        width: 83.3333333333% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .u-1-of-2-bp4 {
+        width: 50% !important;
+    }
+    .u-1-of-3-bp4 {
+        width: 33.3333333333% !important;
+    }
+    .u-2-of-3-bp4 {
+        width: 66.6666666667% !important;
+    }
+    .u-1-of-4-bp4 {
+        width: 25% !important;
+    }
+    .u-3-of-4-bp4 {
+        width: 75% !important;
+    }
+    .u-1-of-5-bp4 {
+        width: 20% !important;
+    }
+    .u-2-of-5-bp4 {
+        width: 40% !important;
+    }
+    .u-3-of-5-bp4 {
+        width: 60% !important;
+    }
+    .u-4-of-5-bp4 {
+        width: 80% !important;
+    }
+    .u-1-of-6-bp4 {
+        width: 16.6666666667% !important;
+    }
+    .u-5-of-6-bp4 {
+        width: 83.3333333333% !important;
+    }
+}
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+    Media Queries
+    ---
+    EXAMPLE Media Queries for Responsive Design.
+    These examples override the primary ('mobile first') styles.
+    USE THEM INLINE!
+*/
+
+/* Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in mobile first design
+*/
+
+/* Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+*/
+
+/* Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+*/
+
+/* Large devices (landscape tablets, desktops, 992px and up)
+@media (min-width: 992px) {}
+*/
+
+/* Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
